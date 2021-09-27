@@ -1,0 +1,46 @@
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="login-wrap">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="my-addon1">نام</span>
+                            </div>
+                            <input class="form-control" type="text" name="" placeholder="اسمت؟"
+                                   aria-label="Recipient's " aria-describedby="my-addon1" [(ngModel)]="Name" name="FirstName">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="my-addon2">نام خانوادگی</span>
+                            </div>
+                            <input class="form-control" type="text" name="" placeholder="فامیلت؟"
+                                   aria-label="Recipient's " aria-describedby="my-addon2" [(ngModel)]="Family" name="LastName">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="my-addon3">کد ملی</span>
+                            </div>
+                            <input class="form-control" type="number" name="" placeholder="" aria-label="Recipient's "
+                                   aria-describedby="my-addon3" [(ngModel)]="id" name="ID">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="my-addon4">شهر محل تولد</span>
+                            </div>
+                            <select class="form-control" aria-describedby="my-addon4" [(ngModel)]="City" name="CName">
+                                <option>مشهد</option>
+                                <option>تهران</option>
+                                <option>شیراز</option>
+                                <option>اهواز</option>
+                            </select>
+                        </div>
+                        <div class="totheleft">
+                            <button type="button" class="btn btn-primary" (click)="register()">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ثبت&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-cmp-user-list [elements]="elements"></app-cmp-user-list>
