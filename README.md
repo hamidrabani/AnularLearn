@@ -14,6 +14,9 @@ dotnet core                   3.1.200
 
 
 download and extract zip file
+
 run cmd and go to project folder
+
 run: dotnet bulild
+
 run: dotnet run
