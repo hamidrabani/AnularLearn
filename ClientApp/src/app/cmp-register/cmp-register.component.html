@@ -38,9 +38,13 @@
                             <button type="button" class="btn btn-primary" (click)="register()">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ثبت&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </button>
+                            &nbsp;&nbsp;
+                            <button type="button" class="btn btn-secondary" (click)="refresh()">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;از نو&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </button>
                         </div>
                 </div>
             </div>
         </div>
     </div>
-    <app-cmp-user-list [elements]="elements"></app-cmp-user-list>
+    <app-cmp-user-list (ItemForEdit)="EditItem($event)"></app-cmp-user-list>

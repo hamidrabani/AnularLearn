@@ -7,28 +7,43 @@ import { personal } from '../Services/personal.service';
   styleUrls: ['./cmp-register.component.scss']
 })
 export class CmpRegisterComponent implements OnInit {
-  serv: personal | undefined;
-  elements: any = []
-  
   id: string = "";
   Name: string = "";
   Family: string = "";
   City: string = "";
-
-  constructor(service: personal) { 
-    this.serv = service;
+  isEdit: boolean = false;
+  indexForEdit: number = -1;
+  constructor(private service: personal) { 
+    /*new this.service.change().subscribe(data => {
+      console.log("ChangeEmitt");
+      
+    });*/
   }
 
   ngOnInit(): void {
   }
 
   register(){
-    //id: any, Name: any, Family: any, City: any
-    console.log('Push');
-    //this.serv?.AddToList(this.id, this.Name, this.Family, this.City);
-    this.elements.push({id: this.id, Name: this.Name, Family: this.Family, City: this.City});
-    //= this.serv?.getList();
+    if (this.isEdit)
+      this.service.UpdateToList(this.indexForEdit, this.id, this.Name, this.Family, this.City);
+    else
+      this.service.AddToList(this.id, this.Name, this.Family, this.Name);
     this.id = this.Name = this.City = this.Family =""
+    this.isEdit = false;
+    this.indexForEdit = -1;
   }
 
+  EditItem(Index: number){
+    this.id = this.service.listP[Index].id;
+    this.Name = this.service.listP[Index].Name;
+    this.City = this.service.listP[Index].City;
+    this.Family = this.service.listP[Index].Family;
+    this.indexForEdit = Index;
+    this.isEdit = true;
+  }
+
+  refresh(){
+    this.id = this.Name = this.City = this.Family =""
+    this.isEdit = false;
+  }
 }

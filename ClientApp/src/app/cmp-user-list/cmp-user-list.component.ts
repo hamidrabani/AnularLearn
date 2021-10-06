@@ -1,4 +1,4 @@
-import {  Component, Input, OnInit } from '@angular/core';
+import {  Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { personal } from '../Services/personal.service';
 
 @Component({
@@ -7,19 +7,36 @@ import { personal } from '../Services/personal.service';
   styleUrls: ['./cmp-user-list.component.scss']
 })
 export class CmpUserListComponent implements OnInit {
-  @Input() elements: any = []
-  constructor() { 
-    console.log(this.elements);
+  //serv: personal | undefined;
+  constructor(public service: personal) { 
+    console.log(this.service);
+    
   }
+  @Output()ItemForEdit = new EventEmitter<number>();
   
   headElements = ['کد ملی', 'نام', 'نام خانوادگی', 'شهر محل تولد'];
   booleanValue: any = false;
+  IsAscSort : boolean = true;
 
-  public sort(item:any){
-    console.log("item: " + item);
-    
+  public OnclickSort(index: number){
+    this.service.sort(index);
+    this.service.listP
   }
 
   ngOnInit(): void {
   }
+
+  public OnClickRemove(Index: number){
+    //console.log('Test', Index);
+    //this.service.splice(no, 1);
+    this.service.RemoveFromList(Index);
+
+  }
+
+  public OnClickEdit(Index: number){
+    //console.log('Test', Index);
+    this.ItemForEdit.emit(Index);
+  }
+
+ 
 }

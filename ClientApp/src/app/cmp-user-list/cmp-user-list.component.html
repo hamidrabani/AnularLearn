@@ -1,15 +1,20 @@
 <div class="container">
     <div class="table-responsive">
-		<div class="row text-white col-11">
-			<div class="col-md-3 col-6 Header" *ngFor="let head of headElements"  (click)="sort($event)">
-				{{head}}
-			</div>
+		<div class="row text-white col-12">
+			<div class="col-2 Header" (click)="OnclickSort(1)">کدملی</div>
+			<div class="col-3 Header" (click)="OnclickSort(2)">نام</div>
+			<div class="col-3 Header" (click)="OnclickSort(3)">نام خانوادگی</div>
+			<div class="col-2 Header" (click)="OnclickSort(4)">شهر محل تولد</div>
+			<div class="col-1 Header" >ویرایش</div>
+			<div class="col-1 Header" >حذف</div>
 		</div>
-		<div class="row col-11 GridColor" *ngFor="let el of elements; let i = index">
-			<div class="col-md-3 col-6" >{{el.id}}</div>
-			<div class="col-md-3 col-6" >{{el.Name}}</div>
-			<div class="col-md-3 col-6" >{{el.Family}}</div>
-			<div class="col-md-3 col-6" >{{el.City}}</div>
+		<div class="row col-12 GridColor" *ngFor="let el of service.listP; let i = index">
+			<div class="col-2" >{{el.id}}</div>
+			<div class="col-3" >{{el.Name}}</div>
+			<div class="col-3" >{{el.Family}}</div>
+			<div class="col-2" >{{el.City}}</div>
+			<div class="col-1 icon-cell" ><i class="bi bi-pencil-fill icon-green" (click)="OnClickEdit(i)"></i></div>
+			<div class="col-1 icon-cell" ><i class="bi bi-x-lg icon-red" (click)="OnClickRemove(i)"></i></div>
 		</div>
     </div>
 </div>
