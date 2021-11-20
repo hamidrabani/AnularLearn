@@ -6,14 +6,14 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="my-addon1">نام</span>
                             </div>
-                            <input class="form-control" type="text" name="" placeholder="اسمت؟"
+                            <input required class="form-control" type="text" name="" placeholder="اسمت؟"
                                    aria-label="Recipient's " aria-describedby="my-addon1" [(ngModel)]="Name" name="FirstName">
                         </div>
                         <div class="input-group">
                             <div class="input-group-append">
                                 <span class="input-group-text" id="my-addon2">نام خانوادگی</span>
                             </div>
-                            <input class="form-control" type="text" name="" placeholder="فامیلت؟"
+                            <input required class="form-control" type="text" name="" placeholder="فامیلت؟"
                                    aria-label="Recipient's " aria-describedby="my-addon2" [(ngModel)]="Family" name="LastName">
                         </div>
                         <div class="input-group">
@@ -28,10 +28,7 @@
                                 <span class="input-group-text" id="my-addon4">شهر محل تولد</span>
                             </div>
                             <select class="form-control" aria-describedby="my-addon4" [(ngModel)]="City" name="CName">
-                                <option>مشهد</option>
-                                <option>تهران</option>
-                                <option>شیراز</option>
-                                <option>اهواز</option>
+                                <option *ngFor="let item of Cities">{{item}}</option>
                             </select>
                         </div>
                         <div class="totheleft">
@@ -47,4 +44,3 @@
             </div>
         </div>
     </div>
-    <app-cmp-user-list (ItemForEdit)="EditItem($event)"></app-cmp-user-list>

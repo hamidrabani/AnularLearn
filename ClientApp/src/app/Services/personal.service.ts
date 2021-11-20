@@ -1,8 +1,11 @@
 //import { Injectable } from "@angular/core";
 
+import { Output, EventEmitter } from '@angular/core';
+
 export class personal{
-    IsAscSort: boolean = true;
-    sort(index: number){
+  IsAscSort: boolean = true;
+  ItemForEdit: EventEmitter<number> = new EventEmitter();
+  sort(index: number){
         this.IsAscSort = !this.IsAscSort;
         this.listP.sort((obj1:any, obj2:any) =>{
             switch (index) {
@@ -28,24 +31,33 @@ export class personal{
     ];
     getList(){
         return this.listP;
-    }
+  }
 
-    AddToList(id: any, Name: any, Family: any, city: any){
-        //console.log('Push');
-        this.listP.push({id: id, Name: Name, Family: Family, City: city});
-    }
+  GetItemForEdit(index: number) {
+    console.log('Edit');
+    this.ItemForEdit.emit(index);
+  }
 
-    UpdateToList(index: number, id: any, Name: any, Family: any, city: any){
-        //console.log('Push');
-        this.RemoveFromList(index);
-        this.AddToList(id, Name, Family, city);
-    }
+  getNavChangeEmitter() {
+    return this.ItemForEdit;
+  }
+
+  AddToList(id: any, Name: any, Family: any, city: any){
+      //console.log('Push');
+      this.listP.push({id: id, Name: Name, Family: Family, City: city});
+  }
+
+  UpdateToList(index: number, id: any, Name: any, Family: any, city: any){
+      //console.log('Push');
+      this.RemoveFromList(index);
+      this.AddToList(id, Name, Family, city);
+  }
 
     
-    RemoveFromList(index: number){
-        this.listP.splice(index, 1);
-        //console.log(this.listP);
-    }
+  RemoveFromList(index: number){
+      this.listP.splice(index, 1);
+      //console.log(this.listP);
+  }
 }
 interface PersonalName {
     id: string;

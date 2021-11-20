@@ -1,0 +1,22 @@
+
+
+<div class="container" dir="rtl">
+      <div class="col-12">
+        <ul class="nav nav-tabs">
+          <li class="nav-item" role="presentation">
+            <h4><a href="#" [ngStyle]="{'background-color':isRegisterShow === true ? 'white' : '#f52f57'}" (click)="RegisterClick()">ثبت جدید</a></h4>
+          </li>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <li class="nav-item" role="presentation">
+            <h4><a href="#" [ngStyle]="{'background-color':isListShow === true ? 'white' : '#f52f57'}" (click)="ListClick()">لیست کاربران</a></h4>
+          </li>
+        </ul>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-12">
+        <app-cmp-register *ngIf="isRegisterShow"></app-cmp-register>
+        <app-cmp-user-list *ngIf="isListShow"></app-cmp-user-list>
+      </div>
+    </div>
+</div>

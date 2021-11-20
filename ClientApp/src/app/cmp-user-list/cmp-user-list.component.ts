@@ -9,10 +9,9 @@ import { personal } from '../Services/personal.service';
 export class CmpUserListComponent implements OnInit {
   //serv: personal | undefined;
   constructor(public service: personal) { 
-    console.log(this.service);
+    //console.log(this.service);
     
   }
-  @Output()ItemForEdit = new EventEmitter<number>();
   
   headElements = ['کد ملی', 'نام', 'نام خانوادگی', 'شهر محل تولد'];
   booleanValue: any = false;
@@ -20,7 +19,9 @@ export class CmpUserListComponent implements OnInit {
 
   public OnclickSort(index: number){
     this.service.sort(index);
-    this.service.listP
+    //this.service.listP
+    this.service.GetItemForEdit(-1);
+    //this.ItemForEdit.emit(-1);
   }
 
   ngOnInit(): void {
@@ -35,7 +36,8 @@ export class CmpUserListComponent implements OnInit {
 
   public OnClickEdit(Index: number){
     //console.log('Test', Index);
-    this.ItemForEdit.emit(Index);
+    //this.ItemForEdit.emit(Index);
+    this.service.GetItemForEdit(Index);
   }
 
  
